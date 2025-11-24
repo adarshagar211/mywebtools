@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WebTools – Free Online Developer Utilities</title>
+    <meta name="description"
+        content="WebTools offers free, fast, privacy-safe developer utilities like JSON Formatter, Base64 Encoder, URL Encoder, and more." />
+
+    <link rel="canonical" href="https://mywebtools.it.com" />
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="WebTools">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <!-- ✅ Include Header Fragment -->
+    <div id="header"></div>
+
+    <div class="container py-5">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold">Welcome to WebTools</h2>
+            <p class="text-muted">Simple online tools for text, numbers, conversions, and more.</p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Word & Letter Counter -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="bi bi-fonts"></i> Word & Letter Counter</h5>
+                        <p class="card-text text-muted">
+                            Count words and letters easily with space options.
+                        </p>
+                        <a href="text-counter.html" class="btn btn-outline-primary mt-auto">Open Tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="bi bi-thermometer-half"></i> Temperature Converter</h5>
+                        <p class="card-text text-muted">Convert °C, °F, and Kelvin instantly.</p>
+                        <a href="temperature-converter.html" class="btn btn-outline-primary mt-auto">Open Tool</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="bi bi-code-slash"></i> JSON Formatter</h5>
+                        <p class="card-text text-muted">Beautify or minify JSON instantly online.</p>
+                        <a href="json-formatter.html" class="btn btn-outline-primary mt-auto">Open Tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="bi bi-shuffle"></i> Encoder & Decoder</h5>
+                        <p class="card-text text-muted">Encode or decode text in Base64, URL, HTML, HEX, or Binary
+                            formats.</p>
+                        <a href="encoder-decoder.html" class="btn btn-outline-primary mt-auto">Open Tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="bi bi-shuffle"></i> QR Code</h5>
+                        <p class="card-text text-muted">QR Code Generator & Scanner</p>
+                        <a href="qr-code.html" class="btn btn-outline-primary mt-auto">Open Tool</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="bi bi-filetype-pdf"></i> PDF ⇄ JPG Converter</h5>
+                        <p class="card-text text-muted">Convert PDF to JPG or JPG to PDF easily.</p>
+                        <a href="pdf-image.html" class="btn btn-outline-primary mt-auto">Open Tool</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ✅ Include Footer Fragment -->
+    <div id="footer"></div>
+
+    <script>
+        fetch("/fragments/header.html")
+            .then(response => response.text())
+            .then(data => document.getElementById("header").innerHTML = data);
+
+        fetch("/fragments/footer.html")
+            .then(response => response.text())
+            .then(data => document.getElementById("footer").innerHTML = data);
+    </script>
+
+</body>
+
+</html>

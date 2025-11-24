@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Formatter & Encoder – WebTools</title>
+    <meta name="description" content="Free online JSON Formatter, Beautifier & Encoder – instantly format and validate your JSON data.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="WebTools">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://mywebtools.it.com/json-formatter" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <!-- Header Fragment -->
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container py-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h3 class="card-title mb-4 text-center">JSON Formatter, Beautifier & Validator</h3>
+
+                <form action="/json-formatter/process" method="post">
+                    <div class="mb-3">
+                        <label for="inputJson" class="form-label fw-bold">Input JSON:</label>
+                        <textarea id="inputJson" name="inputJson" class="form-control" rows="8"
+                            placeholder="Paste your JSON here..." th:text="${inputJson}"></textarea>
+                    </div>
+
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+                        <button type="submit" name="action" value="beautify" class="btn btn-primary">
+                            <i class="bi bi-braces"></i> Beautify
+                        </button>
+                        <button type="submit" name="action" value="minify" class="btn btn-success">
+                            <i class="bi bi-file-earmark-zip"></i> Minify
+                        </button>
+                        <button type="submit" name="action" value="validate" class="btn btn-info text-white">
+                            <i class="bi bi-check-circle"></i> Validate
+                        </button>
+                        <button type="submit" name="action" value="clear" id="clearBtn" formnovalidate
+                            class="btn btn-outline-secondary">
+                            <i class="bi bi-x-circle"></i> Clear
+                        </button>
+                    </div>
+
+                    <!-- ✅ Messages -->
+                    <div th:if="${error != ''}">
+                        <div class="alert alert-danger text-center fw-bold" th:text="${error}"></div>
+                    </div>
+                    <div th:if="${success != ''}">
+                        <div class="alert alert-success text-center fw-bold" th:text="${success}"></div>
+                    </div>
+
+                    <!-- ✅ Output -->
+                    <div th:if="${outputJson != ''}">
+                        <div class="mb-3">
+                            <label for="outputJson" class="form-label fw-bold">Result:</label>
+                            <textarea id="outputJson" readonly class="form-control bg-light" rows="8"
+                                th:text="${outputJson}"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Fragment -->
+    <div th:replace="fragments/footer :: footer"></div>
+
+    <script>
+        document.getElementById("clearBtn").addEventListener("click", function (e) {
+            e.preventDefault(); // prevent form submission
+            document.getElementById("inputJson").value = "";
+            const output = document.getElementById("outputJson");
+            if (output) output.value = "";
+            document.querySelectorAll(".alert").forEach(el => el.remove());
+
+            // Optional: show a temporary confirmation
+            const msg = document.createElement("div");
+            msg.className = "alert alert-secondary text-center fw-bold mt-3";
+            msg.innerText = "✅ Cleared input and output.";
+            document.querySelector("#jsonForm").appendChild(msg);
+            setTimeout(() => msg.remove(), 2000);
+        });
+    </script>
+</body>
+
+</html>

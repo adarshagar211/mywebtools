@@ -1,0 +1,52 @@
+<!-- src/main/resources/templates/fragments/header.html -->
+<div th:fragment="header">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="/">WebTools</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Home link -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+
+                        <!-- Tools dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Tools
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="toolsDropdown">
+                                <li><a class="dropdown-item" href="/json-formatter">JSON Formatter</a></li>
+                                <li><a class="dropdown-item" href="/text-counter">Word Counter</a>
+                                </li>
+                                <li><a class="dropdown-item" href="/temperature-converter">Temperature
+                                        Converter</a></li>
+                                <li><a class="dropdown-item" href="/encoder-decoder">Encoder Decoder</a></li>
+                                <li><a class="dropdown-item" href="/qr-code">QR Code</a></li>
+                                <li><a class="dropdown-item" href="/pdf-image">PDF ⇄ JPG Converter</a></li>
+
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item disabled text-muted">More Tools Coming Soon...</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- About / Contact (optional) -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+</div>
